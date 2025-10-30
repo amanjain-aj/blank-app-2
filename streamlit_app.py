@@ -90,7 +90,7 @@ st.markdown("""
 # ================================================================
 
 @st.cache_resource(show_spinner=False)
-def load_model(model_path="./Llama-3.2-1B.Q4_K_M.gguf"):
+def load_model(model_path="Llama-3.2-1B.Q4_K_M.gguf"):
     """Load the fine-tuned INVINCIX model"""
     try:
         llm = Llama(
