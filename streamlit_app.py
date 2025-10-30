@@ -12,7 +12,7 @@ import time
 # ================================================================
 
 st.set_page_config(
-    page_title="INVINCIX Chatbot",
+    page_title="INVINCIX Chatbot v1",
     page_icon="💬",
     layout="wide",
     initial_sidebar_state="expanded"
