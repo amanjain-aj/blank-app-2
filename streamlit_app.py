@@ -6,7 +6,7 @@ No RAG - Just fine-tuned model
 import streamlit as st
 from llama_cpp import Llama
 import time
-
+from huggingface_hub import hf_hub_download
 # ================================================================
 # PAGE CONFIGURATION
 # ================================================================
@@ -17,6 +17,15 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+HF_REPO = "amanjain96/invincix-chatbot"
+GGUF_FILENAME = "Llama-3.2-1B.Q4_K_M.gguf"
+
+
+
+
+
+
 
 # ================================================================
 # CUSTOM CSS FOR INVINCIX BRANDING
@@ -90,9 +99,10 @@ st.markdown("""
 # ================================================================
 
 @st.cache_resource(show_spinner=False)
-def load_model(model_path="Llama-3.2-1B.Q4_K_M.gguf"):
+def load_model():
     """Load the fine-tuned INVINCIX model"""
     try:
+        model_path = hf_hub_download(repo_id=HF_REPO,filename=GGUF_FILENAME,repo_type="model")
         llm = Llama(
             model_path=model_path,
             n_ctx=2048,          # Context window
