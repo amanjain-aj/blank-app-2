@@ -149,7 +149,7 @@ You are a helpful and empathetic assistant for INVINCIX, a software engineering 
 
 
     # Banner
-    st.markdown("""
+st.markdown("""
         <div class="banner">
             <h1>💬 INVINCIX Chatbot</h1>
             <p>"Simplicity is our culture and simplification is what we do"</p>
@@ -160,7 +160,7 @@ You are a helpful and empathetic assistant for INVINCIX, a software engineering 
     # SIDEBAR
     # ================================================================
     
-    with st.sidebar:
+with st.sidebar:
         st.image("https://via.placeholder.com/300x80/667eea/ffffff?text=INVINCIX", use_column_width=True)
         
         st.markdown("---")
@@ -250,10 +250,10 @@ You are a helpful and empathetic assistant for INVINCIX, a software engineering 
     # LOAD MODEL
     # ================================================================
     
-    with st.spinner("🔄 Loading INVINCIX chatbot model..."):
+with st.spinner("🔄 Loading INVINCIX chatbot model..."):
         llm, error = load_model()
     
-    if error:
+if error:
         st.error(f"❌ **Error loading model**: {error}")
         st.markdown("""
         ### Troubleshooting:
@@ -265,14 +265,14 @@ You are a helpful and empathetic assistant for INVINCIX, a software engineering 
         """)
         st.stop()
     
-    st.success("✅ Chatbot loaded successfully!")
+st.success("✅ Chatbot loaded successfully!")
     
     # ================================================================
     # CHAT INTERFACE
     # ================================================================
     
     # Initialize chat history
-    if "messages" not in st.session_state:
+if "messages" not in st.session_state:
         st.session_state.messages = [
             {
                 "role": "assistant",
@@ -281,12 +281,12 @@ You are a helpful and empathetic assistant for INVINCIX, a software engineering 
         ]
     
     # Display chat messages
-    for message in st.session_state.messages:
+for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
     
     # Chat input
-    if prompt := st.chat_input("Ask me anything about INVINCIX..."):
+if prompt := st.chat_input("Ask me anything about INVINCIX..."):
         
         # Add user message to chat history
         st.session_state.messages.append({"role": "user", "content": prompt})
@@ -323,8 +323,8 @@ You are a helpful and empathetic assistant for INVINCIX, a software engineering 
     # FOOTER
     # ================================================================
     
-    st.markdown("---")
-    st.markdown("""
+st.markdown("---")
+st.markdown("""
         <div style='text-align: center; color: #7f8c8d; padding: 20px;'>
             <p>💡 <strong>Tip</strong>: Try asking about our services, products, company culture, or how we can help your business!</p>
             <p style='font-size: 0.9em; margin-top: 10px;'>
