@@ -101,8 +101,15 @@ st.markdown("""
 @st.cache_resource(show_spinner=False)
 def load_model():
     """Load the fine-tuned INVINCIX model"""
+    status_placeholder = st.empty()
+    progress_bar = st.progress(0)
     try:
+        status_placeholder.info("📥 Downloading GGUF model from HuggingFace... (first time only, ~400MB)")
+        progress_bar.progress(10)
         model_path = hf_hub_download(repo_id=HF_REPO,filename=GGUF_FILENAME,repo_type="model")
+
+        progress_bar.progress(60)
+        status_placeholder.info("✅ Model downloaded! Loading into memory...")
         llm = Llama(
             model_path=model_path,
             n_ctx=2048,          # Context window
